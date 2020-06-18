@@ -77,7 +77,7 @@ struct ActionOver: ViewModifier {
                 let button = Button(
                     action: {
                         self.presented = false
-                        DispatchQueue.main.async {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                             button.action?()
                         }
                 },
@@ -90,7 +90,7 @@ struct ActionOver: ViewModifier {
                 let button = Button(
                     action: {
                         self.presented = false
-                        DispatchQueue.main.async {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                             button.action?()
                         }
                 },
