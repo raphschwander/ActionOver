@@ -112,10 +112,16 @@ struct ActionOver: ViewModifier {
             .iPhone {
                 $0
                     .actionSheet(isPresented: $presented) {
-                        ActionSheet(
-                            title: Text(self.title),
-                            message: Text(self.message ?? ""),
-                            buttons: sheetButtons)
+						if self.message == nil {
+							return ActionSheet(
+								title: Text(self.title),
+								buttons: sheetButtons)
+						} else {
+							return ActionSheet(
+								title: Text(self.title),
+								message: Text(self.message!),
+								buttons: sheetButtons)
+						}
                 }
         }
         .iPadAndMac {
